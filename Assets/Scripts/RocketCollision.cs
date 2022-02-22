@@ -1,21 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RocketCollision : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem m_successVFX;
+    [SerializeField] private ParticleSystem m_crashVFX;
+
     private void OnCollisionEnter(Collision other)
     {
         switch (other.gameObject.tag)
         {
             case "Friendly":
-                Debug.Log("Hit Friend");
                 break;
             case "Finish":
-                Debug.Log("Hit Finish");
+                GameManager.instance.ChangeState(GameState.LEVEL_FINISH);
+                m_successVFX.Play();
                 break;
             default:
-                Debug.Log("DEAD");
+                GameManager.instance.ChangeState(GameState.PLAYER_DIED);
+                m_crashVFX.Play();
                 break;
         }
     }
@@ -25,7 +30,6 @@ public class RocketCollision : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Fuel":
-                Debug.Log("Hit Fuel");
                 break;
         }
     }

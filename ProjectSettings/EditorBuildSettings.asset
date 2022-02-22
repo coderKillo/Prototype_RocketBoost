@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/OverAndUnder.unity
+    guid: d7a0a8018f92e1f41b7ba8507a623263
+  - enabled: 1
+    path: Assets/Scenes/Moving.unity
+    guid: 3305742d08957814fa0c2b1c53be60fc
   m_configObjects: {}
